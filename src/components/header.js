@@ -40,3 +40,33 @@ Header.defaultProps = {
 }
 
 export default Header
+
+// const HeaderStyles = styled.header`
+//   height: 80px;
+//   background: ${props => props.theme.teal};
+//   color: white;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `
+
+// const Div = styled.div`
+//   width: 80%;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// `
+
+// const Logo = styled(Link)`
+//   text-decoration: none;
+//   font-size: 3rem;
+//   color: white;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// `
+
+// const Nav = styled.div`
+//   display: flex;
+//   align-items: center;
+// `
