@@ -31,14 +31,30 @@ const Logo = styled(Link)`
 const Nav = styled.div`
   display: flex;
   align-items: center;
+
+  /* ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    li {
+      list-style: none;
+    }
+  } */
 `
+
+// const LinkStyles = styled(Link)`
+//   text-decoration: none;
+//   color: white;
+// `
 
 const Header = ({ siteTitle }) => (
   <HeaderStyles>
     <Div>
       <Logo to="/">Logo</Logo>
-      <Nav>Navigation</Nav>
     </Div>
+    <Nav>Navigation</Nav>
   </HeaderStyles>
 )
 
