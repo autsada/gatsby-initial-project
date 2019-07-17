@@ -26,13 +26,15 @@ const Logo = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  widows: 50%;
 `
 
 const Nav = styled.div`
   display: flex;
   align-items: center;
+  width: 50%;
 
-  /* ul {
+  ul {
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -41,20 +43,29 @@ const Nav = styled.div`
     li {
       list-style: none;
     }
-  } */
+  }
 `
 
-// const LinkStyles = styled(Link)`
-//   text-decoration: none;
-//   color: white;
-// `
+const LinkStyles = styled(Link)`
+  text-decoration: none;
+  color: white;
+`
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <HeaderStyles>
     <Div>
       <Logo to="/">Logo</Logo>
+      <Nav>
+        <ul>
+          <li>
+            <LinkStyles to="/">HOME</LinkStyles>
+          </li>
+          <li>
+            <LinkStyles to="/blogs">BLOG</LinkStyles>
+          </li>
+        </ul>
+      </Nav>
     </Div>
-    <Nav>Navigation</Nav>
   </HeaderStyles>
 )
 
