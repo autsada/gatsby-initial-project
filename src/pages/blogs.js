@@ -8,7 +8,7 @@ const SecondPage = ({ data }) => {
       <h4>{data.allMarkdownRemark.totalCount}</h4>
       {data.allMarkdownRemark.edges.map(post => (
         <div key={post.node.frontmatter.title}>
-          <Link to="/blogs">
+          <Link to={`${post.node.fields.slug}`}>
             <h2>{post.node.frontmatter.title}</h2>
             <span>{post.node.frontmatter.date}</span>
             <p>{post.node.frontmatter.excerpt}</p>
@@ -28,6 +28,9 @@ export const query = graphql`
             title
             date(formatString: "MMMM DD, YYYY")
             excerpt
+          }
+          fields {
+            slug
           }
         }
       }
