@@ -10,6 +10,10 @@ const HeaderStyles = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media ${props => props.theme.sm} {
+    height: 60px;
+  }
 `
 
 const Div = styled.div`
@@ -23,10 +27,17 @@ const Logo = styled(Link)`
   text-decoration: none;
   font-size: 3rem;
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  widows: 50%;
+  width: 50%;
+
+  .logo {
+    width: 10%;
+    transition: all ${props => props.theme.transitionDuration} ease-out;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
 `
 
 const Nav = styled.div`
@@ -49,6 +60,15 @@ const Nav = styled.div`
 const LinkStyles = styled(Link)`
   text-decoration: none;
   color: white;
+
+  transition: all ${props => props.theme.transitionDuration} ease-out;
+
+  &:hover {
+    cursor: pointer;
+    color: ${props => props.theme.lightTeal};
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
 `
 
 const Header = () => (

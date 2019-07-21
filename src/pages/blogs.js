@@ -1,20 +1,67 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
+import styled from "styled-components"
+
+const PostsDiv = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4rem;
+  padding-bottom: 4rem;
+
+  @media ${props => props.theme.sm} {
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+  }
+`
+
+const PostLink = styled(Link)`
+  color: ${props => props.theme.black};
+  text-decoration: none;
+  background: ${props => props.theme.backgroundGrey};
+
+  border-radius: 4px;
+  transition: all ${props => props.theme.transitionDuration} ease-out;
+  /* box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.4); */
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+  &:hover {
+    background: ${props => props.theme.hoverBackground};
+    transform: scale(1.05);
+  }
+`
+
+const Span = styled.span`
+  color: ${props => props.theme.grey};
+  font-style: italic;
+`
 
 const SecondPage = ({ data }) => {
+  const { totalCount, edges } = data.allMarkdownRemark
   return (
     <>
       <h1>Blog Page</h1>
-      <h4>{data.allMarkdownRemark.totalCount}</h4>
-      {data.allMarkdownRemark.edges.map(post => (
-        <div key={post.node.frontmatter.title}>
-          <Link to={`${post.node.fields.slug}`}>
-            <h2>{post.node.frontmatter.title}</h2>
-            <span>{post.node.frontmatter.date}</span>
-            <p>{post.node.frontmatter.excerpt}</p>
-          </Link>
-        </div>
-      ))}
+      <h4>{totalCount} Posts</h4>
+      <PostsDiv>
+        {edges.map(post => {
+          const {
+            fields: { slug },
+            frontmatter: { title, date, author, excerpt },
+          } = post.node
+          return (
+            <PostLink to={`/${slug}`} key={title}>
+              <div style={{ marginLeft: "2rem" }}>
+                <h2>{title}</h2>
+                <Span>
+                  {author} | {date}
+                </Span>
+                <p>{excerpt}</p>
+              </div>
+            </PostLink>
+          )
+        })}
+      </PostsDiv>
     </>
   )
 }
@@ -28,6 +75,7 @@ export const query = graphql`
             title
             date(formatString: "MMMM DD, YYYY")
             excerpt
+            author
           }
           fields {
             slug

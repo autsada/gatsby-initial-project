@@ -14,6 +14,8 @@ const theme = {
   black: "#212121",
   grey: "#757575",
   lightGrey: "#BDBDBD",
+  backgroundGrey: "#eceff1",
+  hoverBackground: "#cfd8dc",
   white: "#FFFFFF",
   red: "#FF5252",
   darkRed: "#D32F2F",
