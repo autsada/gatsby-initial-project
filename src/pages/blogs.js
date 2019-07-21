@@ -1,4 +1,5 @@
 import React from "react"
+import Image from "gatsby-image"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 
@@ -47,10 +48,11 @@ const SecondPage = ({ data }) => {
         {edges.map(post => {
           const {
             fields: { slug },
-            frontmatter: { title, date, author, excerpt },
+            frontmatter: { title, date, author, excerpt, image },
           } = post.node
           return (
             <PostLink to={`/${slug}`} key={title}>
+              <Image fluid={image.childImageSharp.fluid} />
               <div style={{ marginLeft: "2rem" }}>
                 <h2>{title}</h2>
                 <Span>
@@ -76,6 +78,13 @@ export const query = graphql`
             date(formatString: "MMMM DD, YYYY")
             excerpt
             author
+            image {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           fields {
             slug

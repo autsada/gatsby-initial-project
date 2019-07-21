@@ -3,7 +3,10 @@ date: "2019-07-10"
 title: "How Gatsby Work?"
 excerpt: "Gatsby is a great tool to use for building awesome website or web application that has to deal with dynamic data. In this post we will see how gatsby works."
 author: "AmateurCoder"
+image: "../images/gatsby-work-flow.png"
 ---
+
+![Markdown](../images/gatsby-work-flow.png)
 
 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam ipsam expedita voluptatem quae, placeat obcaecati consequatur deleniti sint vero impedit nostrum debitis, soluta quas eaque nihil exercitationem. Odit, quos nesciunt
 
