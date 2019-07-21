@@ -1,17 +1,27 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components"
+
+const Span = styled.span`
+  color: ${props => props.theme.grey};
+  font-style: italic;
+`
 
 const blogPost = ({ data }) => {
-  const post = data.markdownRemark
+  const {
+    frontmatter: { title, author, date },
+    html,
+  } = data.markdownRemark
 
   return (
     <div style={{ width: "70%", margin: "0 auto" }}>
-      <h1>{post.frontmatter.title}</h1>
+      <h1>{title}</h1>
       <div>
-        <span>{post.frontmatter.date}</span>
-        <span>{post.frontmatter.author}</span>
+        <Span>
+          {author} | {date}
+        </Span>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   )
 }
