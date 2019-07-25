@@ -1,4 +1,32 @@
 const path = require(`path`)
+
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+  return graphql(`
+    query {
+      allContentfulBlogPost {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `).then(result => {
+    result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
+      createPage({
+        path: `/blog/${node.slug}`,
+        component: path.resolve(`./src/templates/blogPost.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          slug: node.slug,
+        },
+      })
+    })
+  })
+}
+
 // const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // exports.onCreateNode = ({ node, getNode, actions }) => {

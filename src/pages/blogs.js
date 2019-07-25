@@ -58,9 +58,13 @@ const SecondPage = ({ data }) => {
             featuredImage,
           } = post.node
           return (
-            <PostLink to={`/${slug}`} key={id}>
-              <div style={{ margin: "0.2rem" }}>
-                <Image fluid={featuredImage.fluid} alt={featuredImage.title} />
+            <PostLink to={`/blog/${slug}`} key={id}>
+              <div>
+                <Image
+                  fluid={featuredImage.fluid}
+                  alt={featuredImage.title}
+                  style={{ borderRadius: "4px 4px 0px 0px" }}
+                />
               </div>
               <div style={{ marginLeft: "2rem" }}>
                 <h2>{title}</h2>
