@@ -7,6 +7,15 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `r9qbjfro3wgo`,
+        // Learn about environment variables: https://gatsby.app/env-vars
+        accessToken: `R3yYdG-6LtO9ldBM9B7Gh_xQc4DK88O9goEAWfSYt8U`,
+        downloadLocal: true,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
